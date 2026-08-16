@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Well-Bearing helps you align the things you do every day with the life you want to live.">
+  <title>Well-Bearing | Find Your Bearings. Live Well.</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: #f7f9f7;
+      color: #24312d;
+      line-height: 1.6;
+    }
+
+    header {
+      padding: 28px 7%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(247, 249, 247, 0.95);
+    }
+
+    .brand {
+      font-size: 1.35rem;
+      font-weight: 650;
+      letter-spacing: -0.02em;
+    }
+
+    .hero {
+      min-height: 72vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 24px;
+      background:
+        radial-gradient(circle at top, #e8f0eb 0%, #f7f9f7 55%);
+    }
+
+    .hero-content {
+      max-width: 820px;
+    }
+
+    .mark {
+      width: 92px;
+      height: 92px;
+      margin: 0 auto 34px;
+      border-radius: 24px;
+      background: #294d43;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.8rem;
+      font-weight: 300;
+      transform: rotate(-8deg);
+      box-shadow: 0 12px 32px rgba(36, 49, 45, 0.12);
+    }
+
+    h1 {
+      font-size: clamp(3rem, 8vw, 5.8rem);
+      line-height: 0.98;
+      letter-spacing: -0.055em;
+      font-weight: 650;
+      margin-bottom: 28px;
+    }
+
+    .tagline {
+      font-size: clamp(1.35rem, 3vw, 2rem);
+      color: #4f6961;
+      margin-bottom: 26px;
+      font-weight: 450;
+    }
+
+    .intro {
+      max-width: 650px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+      color: #65736e;
+    }
+
+    .section {
+      padding: 100px 7%;
+      text-align: center;
+    }
+
+    .section h2 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      letter-spacing: -0.04em;
+      margin-bottom: 22px;
+    }
+
+    .section-copy {
+      max-width: 680px;
+      margin: 0 auto 60px;
+      color: #66736f;
+      font-size: 1.08rem;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      max-width: 1050px;
+      margin: auto;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid #e2e8e4;
+      border-radius: 22px;
+      padding: 38px 30px;
+      text-align: left;
+    }
+
+    .card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      color: #6b7773;
+    }
+
+    .coming {
+      background: #294d43;
+      color: white;
+      padding: 90px 24px;
+      text-align: center;
+    }
+
+    .coming h2 {
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      letter-spacing: -0.04em;
+      margin-bottom: 18px;
+    }
+
+    .coming p {
+      color: #d7e2de;
+      font-size: 1.1rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 38px 20px;
+      color: #7a8682;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 760px) {
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      header {
+        padding: 22px 6%;
+      }
+
+      .hero {
+        min-height: 68vh;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="brand">Well-Bearing</div>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="hero-content">
+
+      <div class="mark">⌁</div>
+
+      <h1>Well-Bearing</h1>
+
+      <div class="tagline">
+        Find your bearings. Live well.
+      </div>
+
+      <p class="intro">
+        A thoughtful way to connect the things you do every day
+        with the life you want to live.
+      </p>
+
+    </div>
+  </section>
+
+  <section class="section">
+
+    <h2>Direction for the life you're actually living.</h2>
+
+    <p class="section-copy">
+      Well-Bearing brings your priorities, habits, goals and progress
+      together in one place—helping you see where you're headed and
+      make small course corrections along the way.
+    </p>
+
+    <div class="cards">
+
+      <div class="card">
+        <h3>Know what matters.</h3>
+        <p>
+          Define the parts of life that matter most to you and keep
+          them visible as life gets busy.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Build momentum.</h3>
+        <p>
+          Turn intentions into meaningful actions and see the progress
+          created by what you repeatedly do.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Adjust your course.</h3>
+        <p>
+          Step back, recognize patterns and make thoughtful changes
+          when your actions and priorities begin to drift apart.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <section class="coming">
+
+    <h2>Coming soon.</h2>
+
+    <p>
+      Well-Bearing is currently in development for iPhone.
+    </p>
+
+  </section>
+
+</main>
+
+<footer>
+  © 2026 Well-Bearing. All rights reserved.
+</footer>
+
+</body>
+</html>
