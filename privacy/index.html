@@ -116,6 +116,28 @@
       text-decoration: none;
       margin: 0 10px;
     }
+
+    @media (max-width: 760px) {
+      header {
+        padding: 14px 6%;
+      }
+
+      main {
+        padding: 56px 22px 80px;
+      }
+
+      .intro {
+        margin-bottom: 40px;
+      }
+
+      section {
+        margin-bottom: 36px;
+      }
+
+      .privacy-card {
+        padding: 24px;
+      }
+    }
   </style>
 </head>
 
@@ -130,12 +152,14 @@
 <main>
 
   <h1>Privacy Policy</h1>
-  <p class="effective">Effective August 17, 2026</p>
+  <p class="effective">Effective September 4, 2026</p>
 
   <p class="intro">
     Well-Bearing is designed to help you connect your everyday actions with
     the life you want to live. Because that can involve personal information,
     privacy and user control are important parts of how Well-Bearing is designed.
+    This Privacy Policy describes how Well-Bearing, LLC handles information in
+    the Well-Bearing apps for Apple and Android and related website resources.
   </p>
 
   <section>
@@ -148,12 +172,15 @@
     </p>
 
     <ul>
-      <li>Life domains, goals and projects</li>
-      <li>Identity statements</li>
-      <li>Momentum items and completion history</li>
-      <li>Bearing Checks, reflections and related entries</li>
+      <li>Life Domains, Goals, Projects, and Tasks</li>
+      <li>Identity Statements</li>
+      <li>Momentum Items and completion history</li>
+      <li>Behavior Change data</li>
+      <li>Bearing Checks, reflections, and related entries</li>
+      <li>Medication information you choose to enter</li>
       <li>Health measurements or other information you manually enter</li>
       <li>App preferences and settings</li>
+      <li>Generated-report source data used to create summaries you request</li>
     </ul>
 
     <p>
@@ -163,26 +190,50 @@
   </section>
 
   <section>
-    <h2>2. Apple Health</h2>
+    <h2>2. Local-first design</h2>
 
     <div class="privacy-card">
       <p>
-        <strong>Health access is optional.</strong> Well-Bearing may request
-        permission to read or write specific types of health and fitness
-        information through Apple Health when those features are enabled.
+        <strong>Core Well-Bearing personal information is generally stored
+        locally on your device.</strong> That local-first design includes the
+        categories listed above when you use those features.
+      </p>
+    </div>
+
+    <p>
+      Platform services may still process information when needed to provide
+      functionality you choose to use — for example operating-system
+      notifications, device storage or backup, Apple Health / Health Connect,
+      Screen Time-related services, Usage Access, App Store or Google Play
+      subscription services, and similar platform infrastructure. This Privacy
+      Policy describes current shipping behavior and does not claim that no
+      external platform processing ever occurs.
+    </p>
+  </section>
+
+  <section>
+    <h2>3. Apple Health</h2>
+
+    <div class="privacy-card">
+      <p>
+        <strong>Health access is optional.</strong> On Apple devices,
+        Well-Bearing may request permission to read or write specific types of
+        health and fitness information through Apple Health when those features
+        are enabled.
       </p>
     </div>
 
     <p>
       Depending on the features you choose to use and the permissions you
       grant, this may include information such as workouts, steps, sleep,
-      body weight and blood pressure.
+      body weight, blood pressure, and mindfulness-related data where supported.
     </p>
 
     <p>
       Apple Health permissions are controlled by you through iOS. Well-Bearing
       can only access the categories of Apple Health information for which
-      you grant permission.
+      you grant permission. Well-Bearing does not receive all Apple Health
+      information — only categories you authorize for enabled functionality.
     </p>
 
     <p>
@@ -193,13 +244,123 @@
     </p>
 
     <p>
-      Well-Bearing does not use Apple Health data for advertising or sell
-      Apple Health data.
+      Well-Bearing does not use Apple Health data for advertising or tracking,
+      and does not sell Apple Health data.
     </p>
   </section>
 
   <section>
-    <h2>3. How information is used</h2>
+    <h2>4. Android Health Connect</h2>
+
+    <div class="privacy-card">
+      <p>
+        <strong>Health Connect access is optional and permission-based.</strong>
+        When you explicitly authorize it on Android, Well-Bearing may access
+        supported health and wellness information through Health Connect.
+      </p>
+    </div>
+
+    <p>
+      Current shipping Android read categories may include:
+    </p>
+    <ul>
+      <li>Steps</li>
+      <li>Exercise / workouts</li>
+      <li>Sleep</li>
+      <li>Weight</li>
+      <li>Blood pressure</li>
+      <li>Mindfulness</li>
+    </ul>
+
+    <p>
+      Current shipping Android write categories include manually entered
+      Weight and manually entered Blood Pressure when you choose to save those
+      measurements.
+    </p>
+
+    <p>
+      Permissions can be reviewed or revoked through Android. Well-Bearing
+      requests only permissions needed for enabled functionality and does not
+      claim to receive all Health Connect information. Health Connect data is
+      used to provide Well-Bearing health and wellness functionality. It is
+      not used for advertising or tracking.
+    </p>
+  </section>
+
+  <section>
+    <h2>5. Screen Time and Digital Well-Being</h2>
+
+    <p>
+      <strong>Apple:</strong> Where available, Well-Bearing may use Apple
+      Screen Time / Family Controls-related functionality to support Digital
+      Well-Being Momentum Items you configure. Those capabilities are provided
+      through Apple platform services and remain subject to Apple’s settings
+      and permissions.
+    </p>
+
+    <p>
+      <strong>Android:</strong> Android users may optionally grant Usage Access
+      for supported Digital Well-Being features. When granted through Android
+      system settings, Well-Bearing may use device/app usage information to:
+    </p>
+    <ul>
+      <li>Measure supported screen-time / app-usage behavior</li>
+      <li>Evaluate configured Digital Well-Being Momentum Items</li>
+      <li>Provide related completion or status information</li>
+    </ul>
+
+    <p>
+      Usage Access is optional and may be revoked. Usage information is not
+      used for advertising or cross-app tracking. Android capabilities differ
+      from Apple Screen Time capabilities. Well-Bearing does not imply that it
+      reads Google’s private Digital Wellbeing dashboard database.
+    </p>
+  </section>
+
+  <section>
+    <h2>6. Local notifications</h2>
+
+    <p>
+      If you enable reminders, Well-Bearing may schedule local notifications
+      through the operating system (for example medication reminders, task
+      reminders, or other user-requested reminders). Notification permission
+      is optional where the platform requires it.
+    </p>
+  </section>
+
+  <section>
+    <h2>7. Medication information</h2>
+
+    <p>
+      Medication information you enter is treated as sensitive personal
+      information. Current shipping medication reminder notifications are
+      designed not to expose drug names or doses on external notification
+      surfaces; those details remain inside the app.
+    </p>
+
+    <p>
+      Medication details are not shared with Accountability Partners.
+      Therapy Planning reports exclude medication details under current
+      shipping behavior. Health Provider reports may include medications only
+      when you explicitly choose to include them.
+    </p>
+  </section>
+
+  <section>
+    <h2>8. Subscriptions and billing</h2>
+
+    <p>
+      Subscriptions are processed by the Apple App Store or Google Play.
+      Well-Bearing may receive product, purchase, or entitlement information
+      needed to determine trial and subscription access and to restore paid
+      access. Well-Bearing does not receive your complete payment-card details
+      from marketplace purchases and does not itself process marketplace
+      credit-card transactions.
+    </p>
+  </section>
+
+  <section>
+    <h2>9. How information is used</h2>
 
     <p>
       Information available to Well-Bearing may be used to operate and improve
@@ -212,25 +373,28 @@
       <li>Support reminders, widgets and other requested app functionality</li>
       <li>Generate summaries and reports requested by you</li>
       <li>Maintain your preferences and app configuration</li>
+      <li>Determine trial or subscription access</li>
       <li>Diagnose technical problems and maintain app reliability</li>
     </ul>
   </section>
 
   <section>
-    <h2>4. Advertising and sale of personal information</h2>
+    <h2>10. Advertising, tracking, and sale of personal information</h2>
 
     <p>
       Well-Bearing does not sell your personal information.
     </p>
 
     <p>
-      Well-Bearing does not use your personal information or health
-      information for third-party advertising.
+      Under current shipping architecture, Well-Bearing does not include an
+      advertising SDK or a cross-app tracking SDK, does not use your personal
+      information or health information for third-party advertising, and does
+      not engage in cross-app tracking for advertising purposes.
     </p>
   </section>
 
   <section>
-    <h2>5. Data sharing</h2>
+    <h2>11. Data sharing and Accountability Partners</h2>
 
     <p>
       Well-Bearing does not share your personal or health information with
@@ -238,20 +402,32 @@
     </p>
 
     <p>
-      Information may be processed by Apple platform services when necessary
-      to provide functionality you choose to use, such as Apple Health,
-      notifications, widgets, device storage, backup or other operating-system
-      services, subject to Apple's applicable settings and policies.
+      Information may be processed by Apple or Google platform services when
+      necessary to provide functionality you choose to use, such as Apple
+      Health, Health Connect, notifications, widgets, device storage, backup,
+      Screen Time-related services, Usage Access, App Store or Google Play
+      subscription services, or other operating-system services, subject to
+      those platforms’ applicable settings and policies.
+    </p>
+
+    <p>
+      Where Accountability Partner sharing is available, only explicitly
+      approved sharing applies. Current shipping behavior does not include
+      sharing HealthKit / Health Connect values, medication names or doses,
+      Identity Statements, Weekly Bearing, Course Corrections, Behavior Change
+      content, or private journal / reflection content with Accountability
+      Partners. Partners see only completion-status style information for
+      commitments you explicitly choose to share.
     </p>
   </section>
 
   <section>
-    <h2>6. Storage and security</h2>
+    <h2>12. Storage and security</h2>
 
     <p>
       Well-Bearing is designed to use the security and privacy protections
-      provided by iOS and Apple platform technologies. Reasonable safeguards
-      are used to protect information handled by the app.
+      provided by iOS, Android, and related platform technologies. Reasonable
+      safeguards are used to protect information handled by the app.
     </p>
 
     <p>
@@ -261,7 +437,7 @@
   </section>
 
   <section>
-    <h2>7. Your choices and control</h2>
+    <h2>13. Your choices and control</h2>
 
     <p>
       Well-Bearing is designed around user choice. You may choose which
@@ -271,12 +447,15 @@
 
     <p>
       Apple Health permissions can be reviewed or changed through the
-      appropriate iOS privacy and Health settings.
+      appropriate iOS privacy and Health settings. Health Connect and Usage
+      Access permissions can be reviewed or changed through the appropriate
+      Android settings. Subscription management and cancellation are handled
+      through your App Store or Google Play account settings.
     </p>
   </section>
 
   <section>
-    <h2>8. Children</h2>
+    <h2>14. Children</h2>
 
     <p>
       Well-Bearing is not directed to children under 13, and we do not
@@ -285,7 +464,7 @@
   </section>
 
   <section>
-    <h2>9. Changes to this policy</h2>
+    <h2>15. Changes to this policy</h2>
 
     <p>
       This Privacy Policy may be updated as Well-Bearing evolves. When
@@ -295,7 +474,7 @@
   </section>
 
   <section>
-    <h2>10. Contact</h2>
+    <h2>16. Contact</h2>
 
     <p>
       If you have questions about this Privacy Policy or privacy in
@@ -303,17 +482,22 @@
     </p>
 
     <div class="privacy-card">
-      <p><strong>Email:</strong> support@wellbearing.app</p>
-      <p><strong>Website:</strong> wellbearing.app</p>
+      <p><strong>Well-Bearing, LLC</strong></p>
+      <p><strong>Email:</strong> <a href="mailto:wellbearingapp@gmail.com">wellbearingapp@gmail.com</a></p>
+      <p><strong>Website:</strong> <a href="https://wellbearing.app">https://wellbearing.app</a></p>
+      <p><strong>Support:</strong> <a href="https://wellbearing.app/support">https://wellbearing.app/support</a></p>
+      <p><strong>Terms:</strong> <a href="https://wellbearing.app/terms">https://wellbearing.app/terms</a></p>
     </div>
   </section>
 
 </main>
 
 <footer>
-  © 2026 Well-Bearing. All rights reserved.
+  © 2026 Well-Bearing, LLC. All rights reserved.
   <br><br>
   <a href="/">Home</a>
+  <a href="/privacy">Privacy</a>
+  <a href="/terms">Terms</a>
   <a href="/support">Support</a>
 </footer>
 
