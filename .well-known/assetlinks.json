@@ -1,0 +1,14 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.wellbearing.app",
+      "sha256_cert_fingerprints": [
+        "31:29:05:A7:93:CD:98:5A:1A:E6:CF:5C:97:79:50:D6:AD:3D:E2:4A:EE:8E:A9:EE:20:D5:7A:57:B4:37:7B:78"
+      ]
+    }
+  }
+]

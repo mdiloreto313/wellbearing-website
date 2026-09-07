@@ -1,0 +1,19 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": [
+          "Z4H3ZLVKLS.com.mdiloreto.ProjectMomentum"
+        ],
+        "components": [
+          {
+            "/": "/auth/callback"
+          },
+          {
+            "/": "/auth/callback/*"
+          }
+        ]
+      }
+    ]
+  }
+}
