@@ -37,15 +37,33 @@
   <main>
     <h1>Return to Well-Bearing</h1>
     <p>If Well-Bearing is installed, return to the app to continue signing in.</p>
-    <a href="wellbearing://auth/callback">Open Well-Bearing</a>
+    <!-- Visible href never includes auth query/hash; handoff uses in-memory URL only. -->
+    <a id="open-app" href="wellbearing://auth/callback">Open Well-Bearing</a>
   </main>
   <script>
     (function () {
+      var search = window.location.search || "";
+      var hash = window.location.hash || "";
+      var appUrl = "wellbearing://auth/callback" + search + hash;
+      var link = document.getElementById("open-app");
+      if (link) {
+        link.setAttribute("href", "wellbearing://auth/callback");
+        link.addEventListener("click", function (event) {
+          event.preventDefault();
+          window.location.href = appUrl;
+        });
+      }
       try {
-        if (window.location.search || window.location.hash) {
-          window.history.replaceState(null, "", "/auth/callback");
-        }
+        window.location.replace(appUrl);
       } catch (e) {}
+      // Strip secrets from the browser address bar after attempting handoff.
+      setTimeout(function () {
+        try {
+          if (window.location.search || window.location.hash) {
+            window.history.replaceState(null, "", "/auth/callback");
+          }
+        } catch (e) {}
+      }, 75);
     })();
   </script>
 </body>
