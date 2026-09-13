@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="no-referrer">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Well-Bearing</title>
+</head>
+<body>
+  <p><a href="/">Return to Well-Bearing</a></p>
+  <script>
+    (function () {
+      // GitHub Pages: map missing /r/{code} paths onto the static landing with ?code=.
+      var path = window.location.pathname || "";
+      var m = path.match(/^\/r\/([A-Za-z0-9]{8})\/?$/i);
+      if (m) {
+        window.location.replace("/r/?code=" + encodeURIComponent(m[1].toUpperCase()));
+        return;
+      }
+      window.location.replace("/");
+    })();
+  </script>
+</body>
+</html>

@@ -1,6 +1,6 @@
 # Auth deep-link infrastructure (website)
 
-Phase 1: trust files + token-safe callback landing. App handlers are a later phase.
+Website trust files are live. iOS Associated Domains + dedicated auth-callback routing are implemented in the iOS app. Android App Links remain a later phase.
 
 ## Identifiers
 
@@ -51,8 +51,17 @@ Current `assetlinks.json` fingerprint:
 
 GitHub Pages cannot set custom `Content-Type` or `Cache-Control` for AASA. Apple typically accepts `application/json` or `application/octet-stream`. There is no `_headers` support on this host. If AASA verification fails, confirm the file is served at the exact path with **no HTML wrapper and no redirect**.
 
-## Next phases (not this change)
+## iOS (implemented)
 
-- **iOS:** `applinks:wellbearing.app` associated domain; auth callback handler (do not treat as widget navigation).
+- Production entitlements include `applinks:wellbearing.app` (Debug / Release / TestFlight share `com.mdiloreto.ProjectMomentum`).
+- Dedicated `AuthCallbackCoordinator` consumes HTTPS + `wellbearing://auth/callback`. Widget routing is never used for auth.
+- TestFlight requires account sign-in when the gate is enabled; after authentication, `TESTFLIGHT_BETA_ACCESS` still grants full feature access.
+- Founder requires account sign-in when the gate is enabled; founder full-access remains after authentication. Founder is not in AASA.
+- **Physical-device Universal Link validation is still required** (see iOS repo `docs/AUTH_DEEPLINK_INFRA.md`).
+- Real Supabase session exchange is **not** live (SDK + backend config still required). Callbacks are consumed once and fail closed (`backendNotConfigured` / `sdkUnavailable`).
+
+## Next phases
+
 - **Android:** verified `https` intent-filter (`autoVerify`, host `wellbearing.app`, path `/auth/callback`); auth session exchange.
-- **Supabase:** allow `https://wellbearing.app/auth/callback` and `wellbearing://auth/callback`.
+- **Supabase:** allow `https://wellbearing.app/auth/callback` and `wellbearing://auth/callback`; add supabase-swift and live keys.
+

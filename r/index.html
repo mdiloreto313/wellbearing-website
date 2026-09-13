@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="no-referrer">
+  <meta name="robots" content="noindex, nofollow">
+  <title>You’ve been invited to Well-Bearing</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: #f7f9f7;
+      color: #24312d;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 20px;
+    }
+    main { max-width: 28rem; text-align: center; }
+    h1 { font-size: 1.5rem; font-weight: 650; letter-spacing: -0.02em; margin-bottom: 12px; }
+    p { color: #4a5a54; margin-bottom: 16px; }
+    .code-box {
+      margin: 20px 0 24px;
+      padding: 14px 16px;
+      background: #eef3ef;
+      border-radius: 10px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 1.25rem;
+      letter-spacing: 0.12em;
+      font-weight: 650;
+      color: #24312d;
+      word-break: break-all;
+    }
+    .actions { display: flex; flex-direction: column; gap: 12px; align-items: center; }
+    a.primary, button.primary {
+      display: inline-block;
+      background: #2f6b4f;
+      color: #fff;
+      text-decoration: none;
+      border: none;
+      padding: 12px 22px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    button.secondary {
+      background: transparent;
+      color: #2f6b4f;
+      border: 1px solid #2f6b4f;
+      padding: 10px 18px;
+      border-radius: 10px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .note { font-size: 0.9rem; color: #6a7a74; margin-top: 8px; }
+    .error { color: #8a3b2b; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>You’ve been invited to Well-Bearing</h1>
+    <p id="body-copy">
+      Open or install Well-Bearing to get started. After you create your account,
+      the referral will be applied automatically if eligible.
+    </p>
+    <p class="note">
+      New accounts receive the standard 14-day trial. This invitation does not grant an extra free month.
+    </p>
+    <div id="code-panel" class="code-box" hidden aria-live="polite"></div>
+    <div class="actions">
+      <a id="open-app" class="primary" href="wellbearing://r">Open Well-Bearing</a>
+      <button id="copy-code" class="secondary" type="button" hidden>Copy invite code</button>
+    </div>
+    <p class="note" id="install-note">
+      If the app isn’t installed yet, install Well-Bearing from the App Store or Google Play,
+      then reopen this link—or paste the invite code after you create your account.
+    </p>
+    <p class="error" id="invalid" hidden>This invite link isn’t valid.</p>
+  </main>
+  <script>
+    (function () {
+      var ALPHABET = /^[23456789ABCDEFGHJKMNPQRSTVWXYZ]{8}$/;
+      function normalize(code) {
+        if (!code) return null;
+        var c = String(code).trim().toUpperCase();
+        return ALPHABET.test(c) ? c : null;
+      }
+      function escapeText(s) {
+        return String(s).replace(/[&<>"']/g, function (ch) {
+          return ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[ch];
+        });
+      }
+      function codeFromPath(pathname) {
+        var m = pathname.match(/^\/r\/([A-Za-z0-9]{8})\/?$/);
+        return m ? normalize(m[1]) : null;
+      }
+      function codeFromQuery() {
+        try {
+          var params = new URLSearchParams(window.location.search || "");
+          return normalize(params.get("code") || params.get("c"));
+        } catch (e) {
+          return null;
+        }
+      }
+
+      var code = codeFromPath(window.location.pathname || "") || codeFromQuery();
+      var open = document.getElementById("open-app");
+      var panel = document.getElementById("code-panel");
+      var copyBtn = document.getElementById("copy-code");
+      var invalid = document.getElementById("invalid");
+
+      if (!code) {
+        if ((window.location.pathname || "").indexOf("/r/") === 0 &&
+            (window.location.pathname || "").length > 3) {
+          invalid.hidden = false;
+          document.getElementById("body-copy").hidden = true;
+          document.getElementById("install-note").hidden = true;
+          open.hidden = true;
+        }
+        return;
+      }
+
+      panel.hidden = false;
+      panel.textContent = code;
+      copyBtn.hidden = false;
+      var appUrl = "wellbearing://r/" + code;
+      open.setAttribute("href", appUrl);
+      open.addEventListener("click", function (event) {
+        event.preventDefault();
+        window.location.href = appUrl;
+      });
+      copyBtn.addEventListener("click", function () {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(code).catch(function () {});
+        }
+      });
+
+      // Prefer Universal/App Link handoff when installed; custom scheme as fallback.
+      try {
+        window.location.replace(appUrl);
+      } catch (e) {}
+
+      // Keep opaque code visible for manual fallback after install; do not store PHI.
+      setTimeout(function () {
+        try {
+          if (window.location.search) {
+            window.history.replaceState(null, "", "/r/" + code);
+          }
+        } catch (e) {}
+      }, 75);
+    })();
+  </script>
+</body>
+</html>
