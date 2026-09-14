@@ -84,6 +84,83 @@
       color: #65736e;
     }
 
+    .launch {
+      padding: 8px 7% 72px;
+      text-align: center;
+    }
+
+    .launch h2 {
+      font-size: clamp(1.55rem, 3.4vw, 2.05rem);
+      letter-spacing: -0.035em;
+      font-weight: 650;
+      margin-bottom: 14px;
+    }
+
+    .launch-copy {
+      max-width: 640px;
+      margin: 0 auto 28px;
+      color: #66736f;
+      font-size: 1.05rem;
+    }
+
+    .platform-cards {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .platform-card {
+      background: white;
+      border: 1px solid #e2e8e4;
+      border-radius: 20px;
+      padding: 26px 24px 24px;
+      text-align: left;
+      display: block;
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .platform-card.is-disabled {
+      cursor: default;
+      pointer-events: none;
+    }
+
+    .platform-kicker {
+      font-size: 0.72rem;
+      font-weight: 650;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #6b7f78;
+      margin-bottom: 8px;
+    }
+
+    .platform-card h3 {
+      font-size: 1.18rem;
+      font-weight: 650;
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+    }
+
+    .platform-card p {
+      color: #6b7773;
+      font-size: 0.98rem;
+      margin: 0;
+    }
+
+    .platform-status {
+      display: inline-block;
+      margin-top: 16px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: #eef3ef;
+      color: #3f5851;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+    }
+
     .section {
       padding: 100px 7%;
       text-align: center;
@@ -127,24 +204,6 @@
       color: #6b7773;
     }
 
-    .coming {
-      background: #294d43;
-      color: white;
-      padding: 90px 24px;
-      text-align: center;
-    }
-
-    .coming h2 {
-      font-size: clamp(2.2rem, 5vw, 3.5rem);
-      letter-spacing: -0.04em;
-      margin-bottom: 18px;
-    }
-
-    .coming p {
-      color: #d7e2de;
-      font-size: 1.1rem;
-    }
-
     footer {
       text-align: center;
       padding: 38px 20px;
@@ -176,6 +235,23 @@
         margin-bottom: 16px;
       }
 
+      .launch {
+        padding: 4px 6% 48px;
+      }
+
+      .launch-copy {
+        margin: 0 auto 22px;
+      }
+
+      .platform-cards {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      .platform-card {
+        padding: 22px 20px 20px;
+      }
+
       .section {
         padding: 56px 6%;
       }
@@ -199,10 +275,6 @@
 
       .card h3 {
         margin-bottom: 8px;
-      }
-
-      .coming {
-        padding: 64px 22px;
       }
 
       footer {
@@ -236,6 +308,45 @@
     the life you're living reflects the life you want to live.
       </p>
 
+    </div>
+  </section>
+
+  <section class="launch" aria-labelledby="launch-heading">
+    <h2 id="launch-heading">Well-Bearing is launching soon.</h2>
+    <p class="launch-copy">
+      The first iPhone and iPad release has been submitted to the Apple App Store.
+      Android beta testing is currently underway through Google Play, with a public
+      Android launch planned soon.
+    </p>
+
+    <div class="platform-cards">
+      <article
+        class="platform-card is-disabled"
+        id="apple-store-cta"
+        aria-disabled="true"
+        data-store="apple"
+        data-store-live="false"
+        data-store-url="https://apps.apple.com/app/id6795731566"
+      >
+        <div class="platform-kicker">Apple</div>
+        <h3>iPhone &amp; iPad</h3>
+        <p>App Store launch submitted to Apple</p>
+        <span class="platform-status">Coming soon</span>
+      </article>
+
+      <article
+        class="platform-card is-disabled"
+        id="google-play-cta"
+        aria-disabled="true"
+        data-store="google"
+        data-store-live="false"
+        data-store-url=""
+      >
+        <div class="platform-kicker">Android</div>
+        <h3>Android</h3>
+        <p>Beta testing underway on Google Play</p>
+        <span class="platform-status">Public launch coming soon</span>
+      </article>
     </div>
   </section>
 
@@ -274,17 +385,24 @@
 
   </section>
 
-  <section class="coming">
-
-    <h2>Well-Bearing for iPhone</h2>
-
-    <p>
-      Well-Bearing is currently in beta testing as we prepare for its App Store release.
-    </p>
-
-  </section>
-
 </main>
+
+<script>
+  (function () {
+    // Flip data-store-live="true" on a platform card after the public listing is live.
+    // Apple URL is already prepared: https://apps.apple.com/app/id6795731566
+    document.querySelectorAll(".platform-card[data-store-live='true'][data-store-url]").forEach(function (card) {
+      var url = card.getAttribute("data-store-url");
+      if (!url) return;
+      var link = document.createElement("a");
+      link.className = "platform-card";
+      link.href = url;
+      link.setAttribute("rel", "noopener noreferrer");
+      link.innerHTML = card.innerHTML;
+      card.replaceWith(link);
+    });
+  })();
+</script>
 
 <footer>
   © 2026 Well-Bearing, LLC. All rights reserved.
