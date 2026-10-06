@@ -37,8 +37,9 @@
   <main>
     <h1>Return to Well-Bearing</h1>
     <p>If Well-Bearing is installed, return to the app to continue signing in.</p>
-    <!-- Visible href never includes auth query/hash; handoff uses in-memory URL only. -->
-    <a id="open-app" href="wellbearing://auth/callback">Open Well-Bearing</a>
+    <!-- href MUST preserve query/hash so iOS receives the auth payload even when
+         the click handler does not run (long-press, preview, JS blocked). -->
+    <a id="open-app" href="wellbearing://auth/callback">Continue to Well-Bearing</a>
   </main>
   <script>
     (function () {
@@ -47,7 +48,9 @@
       var appUrl = "wellbearing://auth/callback" + search + hash;
       var link = document.getElementById("open-app");
       if (link) {
-        link.setAttribute("href", "wellbearing://auth/callback");
+        // Keep the full auth payload on the href. Stripping it to a bare
+        // wellbearing://auth/callback caused the app to open with no session.
+        link.setAttribute("href", appUrl);
         link.addEventListener("click", function (event) {
           event.preventDefault();
           window.location.href = appUrl;
@@ -57,10 +60,11 @@
         window.location.replace(appUrl);
       } catch (e) {}
       // Strip secrets from the browser address bar after attempting handoff.
+      // Do not mutate the in-memory appUrl / link href used for Continue.
       setTimeout(function () {
         try {
           if (window.location.search || window.location.hash) {
-            window.history.replaceState(null, "", "/auth/callback");
+            window.history.replaceState(null, "", "/auth/callback/");
           }
         } catch (e) {}
       }, 75);
