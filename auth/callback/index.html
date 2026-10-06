@@ -45,22 +45,19 @@
     (function () {
       var search = window.location.search || "";
       var hash = window.location.hash || "";
+      // Canonical production custom scheme owned by com.mdiloreto.ProjectMomentum.
       var appUrl = "wellbearing://auth/callback" + search + hash;
       var link = document.getElementById("open-app");
       if (link) {
-        // Keep the full auth payload on the href. Stripping it to a bare
-        // wellbearing://auth/callback caused the app to open with no session.
         link.setAttribute("href", appUrl);
+        // Open only on an explicit user gesture. Auto location.replace(custom-scheme)
+        // without a tap is blocked by Safari and can surface “No application found”.
         link.addEventListener("click", function (event) {
           event.preventDefault();
           window.location.href = appUrl;
         });
       }
-      try {
-        window.location.replace(appUrl);
-      } catch (e) {}
-      // Strip secrets from the browser address bar after attempting handoff.
-      // Do not mutate the in-memory appUrl / link href used for Continue.
+      // Strip secrets from the browser address bar; keep in-memory appUrl / href intact.
       setTimeout(function () {
         try {
           if (window.location.search || window.location.hash) {
